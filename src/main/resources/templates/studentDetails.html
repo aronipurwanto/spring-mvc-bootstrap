@@ -23,6 +23,59 @@
 <div class="container-fluid">
     <h1>Student Detail</h1>
 
+    <form>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="id" class="form-label">Id</label>
+                    <input type="text" class="form-control" id="id" th:value="${student.id}">
+                </div>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" th:value="${student.firstName}">
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" th:value="${student.lastName}">
+                </div>
+            </div>
+        </div>
+        <h3>School History</h3>
+        <div class="row" th:each="history : ${student.schoolHistory}">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" th:text="${history.schoolName}">
+                        Featured
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Class Name</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col">Teacher</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="data : ${history.schoolClasses}">
+                                <th scope="row" th:text="${data.id}">1</th>
+                                <td th:text="${data.schoolClass}">Mark</td>
+                                <td th:text="${data.startDate}">Otto</td>
+                                <td th:text="${data.endDate}">Otto</td>
+                                <td th:text="${data.teacherName}">Otto</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </form>
 </div>
 
 <!-- Optional JavaScript; choose one of the two! -->
