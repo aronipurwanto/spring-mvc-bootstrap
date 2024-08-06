@@ -1,4 +1,4 @@
-package com.gentara.mvcbootstrap.controller;
+package com.gentara.mvcbootstrap.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

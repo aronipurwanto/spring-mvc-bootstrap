@@ -1,4 +1,4 @@
-package com.gentara.mvcbootstrap.model;
+package com.gentara.mvcbootstrap.student.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

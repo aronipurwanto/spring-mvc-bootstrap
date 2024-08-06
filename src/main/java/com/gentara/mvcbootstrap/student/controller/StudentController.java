@@ -1,8 +1,8 @@
-package com.gentara.mvcbootstrap.controller;
+package com.gentara.mvcbootstrap.student.controller;
 
-import com.gentara.mvcbootstrap.model.SchoolClassRes;
-import com.gentara.mvcbootstrap.model.SchoolHistoryRes;
-import com.gentara.mvcbootstrap.model.StudentRes;
+import com.gentara.mvcbootstrap.student.model.SchoolClassRes;
+import com.gentara.mvcbootstrap.student.model.SchoolHistoryRes;
+import com.gentara.mvcbootstrap.student.model.StudentRes;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
