@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class SchoolClassRes {
     private int id;
-    private String schoolClass;
+    private String className;
     private LocalDate startDate;
     private LocalDate endDate;
     private String teacherName;

@@ -4,9 +4,7 @@ import com.gentara.mvcbootstrap.model.SchoolClassRes;
 import com.gentara.mvcbootstrap.model.SchoolHistoryRes;
 import com.gentara.mvcbootstrap.model.StudentRes;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -71,7 +69,7 @@ public class StudentController {
 
     @GetMapping
     public ModelAndView getStudent() {
-        ModelAndView modelAndView = new ModelAndView("student");
+        ModelAndView modelAndView = new ModelAndView("student/list");
         // send data to view
         modelAndView.addObject("studentResList", studentResList);
 
@@ -80,7 +78,7 @@ public class StudentController {
 
     @GetMapping("/detail/{id}")
     public ModelAndView getStudentDetails(@PathVariable("id") Long id) {
-        ModelAndView modelAndView = new ModelAndView("studentDetails");
+        ModelAndView modelAndView = new ModelAndView("student/details");
 
         // get data student
         // cara 1
@@ -95,5 +93,59 @@ public class StudentController {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/new")
+    public ModelAndView newStudents() {
+        ModelAndView modelAndView = new ModelAndView("student/new");
+        StudentRes studentRes = new StudentRes();
+
+        List<SchoolHistoryRes> schoolHistoryResList = new ArrayList<>();
+
+        // SD Class
+        ArrayList<SchoolClassRes> sdClass = new ArrayList<>();
+        sdClass.add(new SchoolClassRes(0,"Kelas 1", null, null,""));
+        sdClass.add(new SchoolClassRes(0,"Kelas 2", null, null,""));
+        sdClass.add(new SchoolClassRes(0,"Kelas 3", null, null,""));
+        sdClass.add(new SchoolClassRes(0,"Kelas 4", null, null,""));
+        sdClass.add(new SchoolClassRes(0,"Kelas 5", null, null,""));
+        sdClass.add(new SchoolClassRes(0,"Kelas 6", null, null,""));
+
+        // SD
+        SchoolHistoryRes sdHistory = new SchoolHistoryRes(0,"SD","","",sdClass);
+        // add school histoty
+        schoolHistoryResList.add(sdHistory);
+
+        // smp class
+        ArrayList<SchoolClassRes> smpClass = new ArrayList<>();
+        smpClass.add(new SchoolClassRes(0,"Kelas 1", null, null,""));
+        smpClass.add(new SchoolClassRes(0,"Kelas 2", null, null,""));
+        smpClass.add(new SchoolClassRes(0,"Kelas 3", null, null,""));
+        // SMP
+        SchoolHistoryRes smpHistory = new SchoolHistoryRes(0,"SMP","","",smpClass);
+        // add school history
+        schoolHistoryResList.add(smpHistory);
+
+        // sma class
+        ArrayList<SchoolClassRes> smaClass = new ArrayList<>();
+        smaClass.add(new SchoolClassRes(0,"Kelas 1", null, null,""));
+        smaClass.add(new SchoolClassRes(0,"Kelas 2", null, null,""));
+        smaClass.add(new SchoolClassRes(0,"Kelas 3", null, null,""));
+        // SMP
+        SchoolHistoryRes smaHistory = new SchoolHistoryRes(0,"SMA","","",smaClass);
+        // add school history
+        schoolHistoryResList.add(smaHistory);
+
+        // add to student
+        studentRes.setSchoolHistory(schoolHistoryResList);
+
+        modelAndView.addObject("student", studentRes);
+        return modelAndView;
+    }
+
+    @PostMapping("/save")
+    public ModelAndView saveStudent(@ModelAttribute("student") StudentRes studentRes) {
+        studentResList.add(studentRes);
+        return new ModelAndView("redirect:/student");
     }
 }
