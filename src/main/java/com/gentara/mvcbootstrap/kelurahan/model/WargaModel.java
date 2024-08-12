@@ -18,4 +18,12 @@ public class WargaModel {
     private LocalDate tanggalLahir;
     private String jenisKelamin;
     private List<SekolahModel> pendidikan = new ArrayList<>();
+
+    public WargaModel(String id, String namaWarga, String tempatLahir, LocalDate tanggalLahir, String jenisKelamin) {
+        this.id = id;
+        this.namaWarga = namaWarga;
+        this.tempatLahir = tempatLahir;
+        this.tanggalLahir = tanggalLahir;
+        this.jenisKelamin = jenisKelamin;
+    }
 }

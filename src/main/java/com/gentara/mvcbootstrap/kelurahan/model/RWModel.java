@@ -13,5 +13,14 @@ import java.util.List;
 public class RWModel {
     private String id;
     private String name;
+    private KelurahanModel kelurahan;
+    private DusunModel dusun;
     private List<RTModel> daftarRT = new ArrayList<RTModel>();
+
+    public RWModel(String id, String name, DusunModel dusun, KelurahanModel kelurahan) {
+        this.id = id;
+        this.name = name;
+        this.dusun = dusun;
+        this.kelurahan = kelurahan;
+    }
 }

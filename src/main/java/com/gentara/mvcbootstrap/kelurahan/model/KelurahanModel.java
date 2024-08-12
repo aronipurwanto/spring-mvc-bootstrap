@@ -14,6 +14,13 @@ public class KelurahanModel {
     private String id;
     private String nama;
     private String alamat;
+    private String kecamatan;
     private List<DusunModel> daftarDusun = new ArrayList<>();
-    private List<RWModel> daftarRW = new ArrayList<>();
+
+    public KelurahanModel(String id, String nama, String alamat, String kecamatan) {
+        this.id = id;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.kecamatan = kecamatan;
+    }
 }
