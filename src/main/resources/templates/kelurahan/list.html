@@ -5,24 +5,24 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <h1>Student List</h1>
+    <h1>Kelurahan List</h1>
 
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Address</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Kecamatan</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="data : ${studentResList}">
+            <tr th:each="data : ${data}">
                 <th scope="row" th:text="${data.id}">1</th>
-                <td th:text="${data.firstName}">Mark</td>
-                <td th:text="${data.lastName}">Otto</td>
-                <td th:text="${data.address}">Otto</td>
+                <td th:text="${data.nama}">Mark</td>
+                <td th:text="${data.alamat}">Otto</td>
+                <td th:text="${data.kecamatan}">Otto</td>
                 <td>
 
                     <a th:href="@{~/student/detail/{id}(id=${data.id})}" class="btn btn-primary">
@@ -36,7 +36,6 @@
 
 <th:block layout:fragment="script">
     <!-- disini mulai java script atau jquery-->
-    <script th:src="@{}"></script>
 </th:block>
 </body>
 </html>

@@ -26,7 +26,7 @@ public class KelurahanV2Controller {
     @GetMapping
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("kelurahan/list");
-        modelAndView.addObject("kelurahanList", kelurahanService.getAllKelurahan());
+        modelAndView.addObject("data", kelurahanService.getAllKelurahan());
         return modelAndView;
     }
 

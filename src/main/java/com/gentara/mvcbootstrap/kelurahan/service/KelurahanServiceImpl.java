@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class KelurahanServiceImpl implements KelurahanService {
@@ -24,7 +25,7 @@ public class KelurahanServiceImpl implements KelurahanService {
     public Optional<KelurahanModel> getKelurahanById(String id) {
         KelurahanModel result = kelurahanModels.stream().filter(kelurahanModel -> kelurahanModel.getId().equals(id))
                 .findFirst().orElse(null);
-        if (kelurahanModels.isEmpty()) {
+        if (result == null) {
             return Optional.empty();
         }
 
@@ -36,6 +37,11 @@ public class KelurahanServiceImpl implements KelurahanService {
         if(kelurahan == null) {
             return Optional.empty();
         }
+
+        if(kelurahan.getId() == null || kelurahan.getId().isEmpty()) {
+            kelurahan.setId(UUID.randomUUID().toString());
+        }
+
         kelurahanModels.add(kelurahan);
         return Optional.of(kelurahan);
     }
