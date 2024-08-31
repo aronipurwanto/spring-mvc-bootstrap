@@ -18,8 +18,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="data : ${data}">
-                <th scope="row" th:text="${data.id}">1</th>
+            <tr th:each="data, dataIter : ${data}">
+                <th scope="row" th:text="${dataIter.index + 1}">1</th>
                 <td th:text="${data.nama}">Mark</td>
                 <td th:text="${data.alamat}">Otto</td>
                 <td th:text="${data.kecamatan}">Otto</td>
